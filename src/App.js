@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
+
+import { AppContent, AppHeader, PageTiile } from "./components";
+import styles from "./styles/modules/app.module.scss";
 
 function App() {
+  useEffect(() => {
+    console.log("app component");
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="container">
+        <PageTiile>TODO List</PageTiile>
+        <div className={styles.app__wrapper}>
+          <AppHeader />
+          <AppContent />
+        </div>
+      </div>
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: {
+            fontSize: "1.4rem",
+          },
+        }}
+      />
+    </>
   );
 }
 
